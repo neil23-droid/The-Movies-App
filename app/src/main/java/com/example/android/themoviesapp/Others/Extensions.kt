@@ -1,7 +1,7 @@
 package com.example.android.themoviesapp.Others
 
-import com.example.android.themoviesapp.Database.UpcomingMoviesTable
 import com.example.android.themoviesapp.Retrofit.UpComingMovies
+import com.example.android.themoviesapp.data.local.entities.UpcomingMoviesTable
 import java.text.SimpleDateFormat
 import java.util.*
 

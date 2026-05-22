@@ -1,1 +1,105 @@
-/build
+# ========================
+# Android
+# ========================
+*.apk
+*.ap_
+*.aab
+*.dex
+*.class
+ 
+# Generated files
+bin/
+gen/
+out/
+release/
+ 
+# Gradle
+.gradle/
+build/
+gradle-app.setting
+!gradle-wrapper.jar
+.gradletasknamecache
+ 
+# Local configuration
+local.properties
+keystore.properties
+ 
+# Signing configs — NEVER commit these
+*.jks
+*.keystore
+*.pepk
+ 
+# ========================
+# IntelliJ / Android Studio
+# ========================
+*.iml
+*.iws
+*.ipr
+.idea/
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/gradle.xml
+.idea/assetWizardSettings.xml
+.idea/dictionaries
+.idea/libraries
+.idea/caches
+.idea/modules.xml
+.idea/navEditor.xml
+.idea/deploymentTargetDropDown.xml
+captures/
+.externalNativeBuild/
+.cxx/
+ 
+# ========================
+# OS
+# ========================
+ 
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+ 
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+ 
+# Linux
+*~
+ 
+# ========================
+# Secrets & Env
+# ========================
+*.env
+.env
+.env.*
+google-services.json
+GoogleService-Info.plist
+secrets.xml
+secrets.properties
+ 
+# ========================
+# NDK / C++
+# ========================
+*.so
+*.o
+*.a
+obj/
+ 
+# ========================
+# Test & Coverage
+# ========================
+*.hprof
+.test-results/
+test-results/
+coverage/
+jacocoTestReport/
+ 
+# ========================
+# Profiling
+# ========================
+captures/

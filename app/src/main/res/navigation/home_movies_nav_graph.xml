@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/home_movies_nav_graph"
+    app:startDestination="@id/moviesListingFragment">
+
+    <fragment
+        android:id="@+id/moviesListingFragment"
+        android:name="com.example.android.themoviesapp.presentation.ui.movies.MoviesListingFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_movies_listing">
+        <action
+            android:id="@+id/action_moviesListingFragment_to_movieDetailsFragment"
+            app:destination="@id/movieDetailsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/movieDetailsFragment"
+        android:name="com.example.android.themoviesapp.presentation.ui.movie_details.MovieDetailsFragment"
+        android:label="fragment_movie_details"
+        tools:layout="@layout/fragment_movie_details" >
+        <argument
+            android:name="movieId"
+            app:argType="long"
+            android:defaultValue="0L" />
+        <argument
+            android:name="movieName"
+            app:argType="string"
+            app:nullable="true" />
+        <action
+            android:id="@+id/action_movieDetailsFragment_to_locationDetailsFragment"
+            app:destination="@id/locationDetailsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
+    <fragment
+        android:id="@+id/locationDetailsFragment"
+        android:name="com.example.android.themoviesapp.presentation.ui.location_details.LocationDetailsFragment"
+        android:label="Location Details"
+        tools:layout="@layout/fragment_location_details" >
+        <argument
+            android:name="bookingSession"
+            app:argType="com.example.android.themoviesapp.presentation.models.BookingSessionModel"
+            app:nullable="true" />
+    </fragment>
+</navigation>

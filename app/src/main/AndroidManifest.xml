@@ -8,15 +8,24 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:name=".MoviesApplication"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TheMoviesApp">
         <activity
+            android:name=".presentation.ui.home.MoviesHomeActivity"
+            android:theme="@style/Theme.TheMoviesApp.NoActionBar"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".BookedTicketHistory.BookedTicketHistoryActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.TheMoviesApp.NoActionBar">
-
-        </activity>
+            android:theme="@style/Theme.TheMoviesApp.NoActionBar"></activity>
         <activity
             android:name=".BookTicket.BookTicketActivity"
             android:screenOrientation="portrait"
@@ -25,8 +34,9 @@
             android:name=".MovieDetail.MovieDetailsActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.TheMoviesApp.NoActionBar" />
-        <activity
+       <!-- <activity
             android:name=".MoviesListing.MoviesListingActivity"
+            android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.TheMoviesApp.NoActionBar">
             <intent-filter>
@@ -34,7 +44,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
+        </activity>-->
     </application>
 
 </manifest>

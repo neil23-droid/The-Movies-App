@@ -14,7 +14,7 @@ data class ResponseMessageDetails (
 
 //Get Upcoming movies list
 data class GetUpComingMoviesResponse(
-    @SerializedName("dates")var date:Dates,
+    @SerializedName("dates")var date:Dates?=null,
     @SerializedName("page") var page:Int=0,
     @SerializedName("results") var moviesList:ArrayList<UpComingMovies> = arrayListOf(),
     @SerializedName("total_pages") var totalPages:Int=0,
@@ -144,5 +144,12 @@ data class UrlResult (
     @SerializedName("published_at") var publishedAt: String? = null,
     @SerializedName("id") var id: String? = null,
 )
+
+
+
+
+
+
+
 
 

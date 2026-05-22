@@ -1,63 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MoviesListing.MoviesListingActivity"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MoviesListing.MoviesListingActivity">
+    android:layout_height="match_parent">
+
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
-        app:popupTheme="@style/AppTheme.PopupOverlay"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+    android:id="@+id/toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:background="?attr/colorPrimary"
+    app:popupTheme="@style/AppTheme.PopupOverlay"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintEnd_toEndOf="parent">
 
 
-        <TextView
-            android:id="@+id/toolbar_title"
-            style="@style/toolbarStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:fontFamily="@font/poppins_semibold"
-            android:text="@string/the_movies_app_label"
-            tools:layout_editor_absoluteX="155dp"
-            tools:layout_editor_absoluteY="16dp" />
-
-    </androidx.appcompat.widget.Toolbar>
-
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/upComingMoviesRV"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/movies_list_item"
-        tools:itemCount="3"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
-
-    <com.google.android.material.progressindicator.CircularProgressIndicator
-        android:id="@+id/materialPorgressBar"
+    <TextView
+        android:id="@+id/toolbar_title"
+        style="@style/toolbarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:trackColor="#DDD"
-        app:trackThickness="5dp"
-        app:indicatorColor="@color/black"
-        android:indeterminate="true"
-        app:indicatorSize="50dp"
-        android:visibility="visible"
-        style="@style/Widget.MaterialComponents.CircularProgressIndicator"
-        app:indicatorDirectionCircular="clockwise"
+        android:layout_gravity="center"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="@string/the_movies_app_label"/>
+
+
+
+</androidx.appcompat.widget.Toolbar>
+
+
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/drawerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/toolbar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        tools:openDrawer="start">
+        <include
+            android:id="@+id/content"
+            layout="@layout/content_activity_movies_listing"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/navigationView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:itemIconTint="@color/white"
+            android:layout_gravity="left"
+            app:menu="@menu/my_options_menu"
+            app:headerLayout="@layout/nav_header">
+
+        </com.google.android.material.navigation.NavigationView>
+
+
+    </androidx.drawerlayout.widget.DrawerLayout>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

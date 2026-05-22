@@ -14,9 +14,10 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="Theme.TheMoviesApp.NoActionBar">
+    <style name="Theme.TheMoviesApp.NoActionBar" parent="Theme.TheMoviesApp">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+       <!-- <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>-->
 
     </style>
 
@@ -33,5 +34,10 @@
         <item name="mrb_progressTint">@color/star_rating_color</item>
         <item name="mrb_progressBackgroundTint">@color/star_rating_bg</item>
         <item name="mrb_fillBackgroundStars">true</item>
+    </style>
+
+    <style name="DrawerArrowStyle" parent="Widget.AppCompat.DrawerArrowToggle">
+        <item name="spinBars">true</item>
+        <item name="color">@android:color/white</item>
     </style>
 </resources>

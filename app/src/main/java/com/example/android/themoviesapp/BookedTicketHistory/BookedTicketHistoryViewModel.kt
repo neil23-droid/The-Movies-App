@@ -1,17 +1,14 @@
 package com.example.android.themoviesapp.BookedTicketHistory
 
-import android.os.Bundle
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.android.themoviesapp.BookTicket.BookTicketRepository
-import com.example.android.themoviesapp.Database.BookedTicketHistoryTable
-import com.example.android.themoviesapp.Database.MoviesDatabase
-import com.example.android.themoviesapp.Database.UpcomingMoviesTable
-import com.example.android.themoviesapp.Others.ApiPreferences
+import com.example.android.themoviesapp.data.local.database.MoviesAppDatabase
+import com.example.android.themoviesapp.data.local.entities.BookedTicketHistoryTable
 import kotlinx.coroutines.*
 
-class BookedTicketHistoryViewModel(private val dataSource: MoviesDatabase, private val apiPreferences: ApiPreferences):ViewModel() {
+/*
+class BookedTicketHistoryViewModel(private val dataSource: MoviesAppDatabase, private val apiPreferences: ApiPreferences):ViewModel() {
 
     private val viewModelJob = Job()
     private val viewModelScope =  CoroutineScope(Dispatchers.Main + viewModelJob)
@@ -42,4 +39,4 @@ class BookedTicketHistoryViewModel(private val dataSource: MoviesDatabase, priva
     override fun onCleared() {
         super.onCleared()
     }
-}
+}*/
