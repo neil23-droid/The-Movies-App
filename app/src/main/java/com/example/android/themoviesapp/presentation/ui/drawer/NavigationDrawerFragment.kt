@@ -24,9 +24,7 @@ class NavigationDrawerFragment : Fragment() {
     }
 
     private var listener: FragmentNavigationDrawerListener? = null
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+
 
     private var _binding: FragmentNavigationDrawerBinding? = null
     // This property is only valid between onCreateView and

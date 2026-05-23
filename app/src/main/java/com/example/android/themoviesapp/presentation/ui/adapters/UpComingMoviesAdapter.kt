@@ -5,7 +5,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.android.themoviesapp.Others.POSTER_BASE_URL
-import com.example.android.themoviesapp.Others.getDate2
 import com.example.android.themoviesapp.R
 import com.example.android.themoviesapp.databinding.MoviesListItemBinding
 import com.example.android.themoviesapp.presentation.models.MoviesListUiModel
@@ -46,7 +45,7 @@ class UpComingMoviesAdapter(
 
         fun bindData(movie: MoviesListUiModel) {
             Glide.with(binding.root)
-                .load("$POSTER_BASE_URL${movie.posterPath.orEmpty()}")
+                .load("$POSTER_BASE_URL${movie.posterPath}")
                 .placeholder(R.drawable.empty_poster)
                 .error(R.drawable.empty_poster)
                 .into(binding.moviePosterIV)

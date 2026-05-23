@@ -1,13 +1,11 @@
 package com.example.android.themoviesapp.presentation.ui.home
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -20,7 +18,6 @@ import com.example.android.themoviesapp.databinding.ActivityMoviesHomeBinding
 import com.example.android.themoviesapp.presentation.models.DrawerItem
 import com.example.android.themoviesapp.presentation.ui.drawer.NavigationDrawerFragment
 import com.example.android.themoviesapp.presentation.ui.movie_details.MovieDetailsFragmentArgs
-import com.example.android.themoviesapp.presentation.ui.movies.MoviesListingFragmentDirections
 import dagger.hilt.android.AndroidEntryPoint
 
 

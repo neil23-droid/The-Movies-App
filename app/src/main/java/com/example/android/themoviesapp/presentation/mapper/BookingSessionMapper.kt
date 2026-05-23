@@ -3,7 +3,6 @@ package com.example.android.themoviesapp.presentation.mapper
 import com.example.android.themoviesapp.domain.model.BookedTicket
 import com.example.android.themoviesapp.domain.model.MovieDetail
 import com.example.android.themoviesapp.presentation.models.BookingSessionModel
-import com.example.android.themoviesapp.presentation.models.MovieDetailsUiModel
 
 // presentation/mapper/BookingSessionMapper.kt
 

@@ -1,7 +1,8 @@
 package com.example.android.themoviesapp.presentation.models
 
 import android.os.Parcelable
-import kotlinx.android.parcel.Parcelize
+import kotlinx.parcelize.Parcelize
+
 
 @Parcelize
 data class BookingSessionModel(
