@@ -51,8 +51,8 @@ class UpComingMoviesAdapter(
                 .error(R.drawable.empty_poster)
                 .into(binding.moviePosterIV)
 
-            binding.movieNameTxt.text = movie.originalTitle.orEmpty()
-            binding.movieReleaseDateTxt.text = movie.releaseDate?.getDate2().orEmpty()
+            binding.movieNameTxt.text = movie.originalTitle
+            binding.movieReleaseDateTxt.text = movie.releaseDate
             binding.adultsOnlyTxt.text = if (movie.isAdultContentVisible) "Adult" else "Non-Adult"
             binding.root.setOnClickListener { onMovieClick(movie) }
         }

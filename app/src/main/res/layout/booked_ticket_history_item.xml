@@ -94,6 +94,7 @@
         android:text="Location"
         android:textColor="@color/black"
         android:textSize="12sp"
+        android:gravity="center_horizontal"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintStart_toStartOf="@id/moviePosterIV"
         app:layout_constraintTop_toBottomOf="@id/ticketDetailsTxt" />
@@ -107,6 +108,7 @@
         android:ellipsize="end"
         android:textColor="@color/black"
         android:textSize="12sp"
+        android:gravity="center_horizontal"
         app:layout_constraintBottom_toBottomOf="@id/locationTxt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/guideline"
@@ -122,6 +124,7 @@
         android:text="Cinema"
         android:textColor="@color/black"
         android:textSize="12sp"
+        android:gravity="center_horizontal"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintStart_toStartOf="@id/moviePosterIV"
         app:layout_constraintTop_toBottomOf="@id/locationTxt" />
@@ -134,6 +137,7 @@
         android:ellipsize="end"
         android:textColor="@color/black"
         android:textSize="12sp"
+        android:gravity="center_horizontal"
         app:layout_constraintBottom_toBottomOf="@id/cinemaTxt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/guideline"
@@ -149,6 +153,7 @@
         android:text="Seat Number"
         android:textColor="@color/black"
         android:textSize="12sp"
+        android:gravity="center_horizontal"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintStart_toStartOf="@id/moviePosterIV"
         app:layout_constraintTop_toBottomOf="@id/cinemaTxt" />
@@ -161,6 +166,7 @@
         android:ellipsize="end"
         android:textColor="@color/black"
         android:textSize="12sp"
+        android:gravity="center_horizontal"
         app:layout_constraintBottom_toBottomOf="@id/seatTxt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/guideline"

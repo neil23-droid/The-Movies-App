@@ -1,8 +1,12 @@
 package com.example.android.themoviesapp.presentation.models
 
+import androidx.annotation.StringRes
+import com.example.android.themoviesapp.R
+
 sealed class DrawerItem {
     object Header : DrawerItem()
-    data class MenuItem( val title: String) : DrawerItem()
-    // Add more menu items here as needed
-    // object AnotherMenuItem : MenuItem()
+
+    sealed class MenuItem(@StringRes val titleRes: Int) : DrawerItem() {
+        object BookedTicketHistory : MenuItem(R.string.booked_ticket_history)
+    }
 }

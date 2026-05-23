@@ -21,7 +21,8 @@ fun BookedTicketHistoryTable.toDomain(): BookedTicket {
         // booking specific
         selectedLocation = this.selectedLocation,
         selectedCinema = this.selectedCinema,
-        selectedSeat = this.selectedSeat
+        selectedSeat = this.selectedSeat,
+        bookingDate = this.bookingDate
     )
 }
 
@@ -38,6 +39,7 @@ fun BookedTicket.toEntity(): BookedTicketHistoryTable {
         title = this.title,
         selectedLocation = this.selectedLocation,
         selectedCinema = this.selectedCinema,
-        selectedSeat = this.selectedSeat
+        selectedSeat = this.selectedSeat,
+        bookingDate = this.bookingDate
     )
 }

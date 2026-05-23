@@ -65,7 +65,8 @@ class LocationDetailsViewModel @Inject constructor(
             val updatedSession = bookingSession.copy(
                 selectedLocation = _selectedLocation.value,
                 selectedCinema   = _selectedCinema.value,
-                selectedSeat     = _selectedSeat.value
+                selectedSeat     = _selectedSeat.value,
+                bookingDate      = System.currentTimeMillis()   // ← set at confirmation time
             ).toDomain()                            // ← BookingSessionModel → BookedTicket
 
            val bookTicketResult  = when (

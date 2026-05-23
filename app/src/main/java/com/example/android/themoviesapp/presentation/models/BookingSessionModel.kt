@@ -19,5 +19,6 @@ data class BookingSessionModel(
     // filled later in booking flow
     val selectedLocation: LocationData? = null,
     val selectedCinema: CinemaData? =null,
-    val selectedSeat: SeatData? = null
+    val selectedSeat: SeatData? = null,
+    val bookingDate: Long = 0L
 ) : Parcelable

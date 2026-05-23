@@ -5,15 +5,20 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
+import androidx.room.migration.Migration
+import androidx.sqlite.db.SupportSQLiteDatabase
 import com.example.android.themoviesapp.data.local.dao.BookedTicketHistoryDao
 import com.example.android.themoviesapp.data.local.dao.MoviesDao
 
 import com.example.android.themoviesapp.data.local.database.LongConverter
+import com.example.android.themoviesapp.data.local.database.MoviesDatabaseMigrations.MIGRATION_2_3
 import com.example.android.themoviesapp.data.local.entities.BookedTicketHistoryTable
 import com.example.android.themoviesapp.data.local.entities.UpcomingMoviesTable
 
 
-@Database(entities = [UpcomingMoviesTable::class, BookedTicketHistoryTable::class], version = 2,  exportSchema = false)
+@Database(entities = [UpcomingMoviesTable::class, BookedTicketHistoryTable::class],
+    version = 3,                        // ← bumped from 2 to 3,
+    exportSchema = false)
 @TypeConverters(LongConverter::class)
 abstract class MoviesAppDatabase : RoomDatabase() {
 
@@ -39,12 +44,10 @@ abstract class MoviesAppDatabase : RoomDatabase() {
                     MoviesAppDatabase::class.java,
                     "movies_database"
                 )
-                    .fallbackToDestructiveMigration()
+                    .addMigrations(MIGRATION_2_3)
                     .build()
                     .also { INSTANCE = it } // 4. Assign and return
             }
         }
     }
-
-
 }

@@ -16,5 +16,6 @@ data class BookedTicket(
     // booking specific
     val selectedLocation: String?,
     val selectedCinema: String?,
-    val selectedSeat: String?
+    val selectedSeat: String?,
+    val bookingDate: Long
 )

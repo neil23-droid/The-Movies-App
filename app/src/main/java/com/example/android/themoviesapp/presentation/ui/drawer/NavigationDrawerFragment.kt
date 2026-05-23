@@ -65,7 +65,7 @@ class NavigationDrawerFragment : Fragment() {
     private fun setupRecyclerView() {
         val menuList = listOf<DrawerItem>(
             DrawerItem.Header,
-            DrawerItem.MenuItem("Booked Ticket History")
+            DrawerItem.MenuItem.BookedTicketHistory
         )
 
         // 4. Access views directly via 'binding'

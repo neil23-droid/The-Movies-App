@@ -17,9 +17,9 @@ class BookedTicketRepositoryImpl(
 ) : BookedTicketRepository {
 
     override suspend fun getBookedTickets(): DomainResult<List<BookedTicket>> = withContext(dispatcher) {
-        return@withContext when (val getBookingHistory = local.getBookedTickets()) {
+        return@withContext when (val bookingHistoryResult = local.getBookedTickets()) {
             is LocalResult.Success -> DomainResult.Success(
-                getBookingHistory.data.map { it.toDomain() }
+                bookingHistoryResult.data.map { it.toDomain() }
             )
 
             is LocalResult.Empty ->{
@@ -27,8 +27,8 @@ class BookedTicketRepositoryImpl(
             }
 
             is LocalResult.Error -> DomainResult.Error(                // ← HTTP code dropped here
-                message = getBookingHistory.message,
-                throwable = getBookingHistory.throwable
+                message = bookingHistoryResult.message,
+                throwable = bookingHistoryResult.throwable
             )
         }
     }

@@ -20,7 +20,8 @@ fun MovieDetail.toBookingSessionModel(): BookingSessionModel {
         releaseDate      = this.releaseDate ?: "",
         popularity       = this.popularity,
         originalLanguage = this.originalLanguage ?: "",
-        adult            = this.adult
+        adult            = this.adult,
+        bookingDate      = 0L
     )
 }
 
@@ -38,6 +39,7 @@ fun BookingSessionModel.toDomain(): BookedTicket {
         adult            = this.adult,
         selectedLocation = this.selectedLocation?.place?:"",
         selectedCinema   = this.selectedCinema?.cinemaName?:"",
-        selectedSeat     = this.selectedSeat?.SeatNumber?:""
+        selectedSeat     = this.selectedSeat?.SeatNumber?:"",
+        bookingDate = this.bookingDate
     )
 }

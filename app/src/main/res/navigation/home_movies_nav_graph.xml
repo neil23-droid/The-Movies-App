@@ -17,6 +17,13 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+  <!--      <action
+            android:id="@+id/action_moviesListingFragment_to_bookingHistoryFragment"
+            app:destination="@id/bookingHistoryFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />-->
     </fragment>
     <fragment
         android:id="@+id/movieDetailsFragment"
@@ -49,4 +56,9 @@
             app:argType="com.example.android.themoviesapp.presentation.models.BookingSessionModel"
             app:nullable="true" />
     </fragment>
+    <fragment
+        android:id="@+id/bookingHistoryFragment"
+        android:name="com.example.android.themoviesapp.presentation.ui.ticket_history.BookingHistoryFragment"
+        android:label="Booking History"
+        tools:layout="@layout/fragment_booking_history" />
 </navigation>

@@ -19,8 +19,10 @@ class NetworkHandlerImpl : NetworkHandler {
             when {
                 response.isSuccessful -> {
                     val body = response.body()
-                    if (body == null) ResponseHandler.EmptyResponse
-                    else ResponseHandler.Success(body)
+                    if (body == null)
+                        ResponseHandler.EmptyResponse
+                    else
+                        ResponseHandler.Success(body)
                 }
                 else -> ResponseHandler.Error(
                     message = response.message(),

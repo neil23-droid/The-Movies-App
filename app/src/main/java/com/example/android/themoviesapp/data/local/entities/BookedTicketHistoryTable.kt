@@ -17,7 +17,8 @@ data class BookedTicketHistoryTable(
     var title: String? = null,
     var selectedLocation:String?=null,
     var selectedCinema:String?=null,
-    var selectedSeat:String?=null
+    var selectedSeat:String?=null,
+    var bookingDate: Long = 0L
 ){
     @PrimaryKey(autoGenerate = true )var _id:Long = 0
 }

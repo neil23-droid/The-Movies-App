@@ -13,12 +13,14 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.NavHostFragment
 import com.example.android.themoviesapp.R
 import com.example.android.themoviesapp.databinding.ActivityMoviesHomeBinding
 import com.example.android.themoviesapp.presentation.models.DrawerItem
 import com.example.android.themoviesapp.presentation.ui.drawer.NavigationDrawerFragment
 import com.example.android.themoviesapp.presentation.ui.movie_details.MovieDetailsFragmentArgs
+import com.example.android.themoviesapp.presentation.ui.movies.MoviesListingFragmentDirections
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -27,6 +29,8 @@ class MoviesHomeActivity : AppCompatActivity(), NavigationDrawerFragment.Fragmen
 
     private lateinit var navController: NavController
     private lateinit var binding: ActivityMoviesHomeBinding
+
+    private var pendingNavigation: DrawerItem.MenuItem? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -103,9 +107,12 @@ class MoviesHomeActivity : AppCompatActivity(), NavigationDrawerFragment.Fragmen
         binding.drawerLayout.addDrawerListener(object : DrawerLayout.SimpleDrawerListener() {
             override fun onDrawerClosed(drawerView: View) {
                 binding.drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
+                pendingNavigation?.let { item ->
+                    pendingNavigation = null                        // ← clear flag
+                    handleNavigationFromDrawerItem(item)                     // ← navigate once
+                }
             }
             override fun onDrawerSlide(drawerView: View, slideOffset: Float) {
-                // slideOffset: 0.0 (closed) to 1.0 (open)
                 if (slideOffset > 0.5f) {
                     binding.toolbar.setNavigationIcon(R.drawable.ic_back_button)
                 } else {
@@ -160,36 +167,40 @@ class MoviesHomeActivity : AppCompatActivity(), NavigationDrawerFragment.Fragmen
                     binding.toolbarTitle.text = destination.label
                     binding.toolbar.setNavigationIcon(R.drawable.ic_back_button)
                 }
+                R.id.bookingHistoryFragment -> {         // ← added
+                    binding.toolbarTitle.text = destination.label
+                    binding.toolbar.setNavigationIcon(R.drawable.ic_back_button)
+                }
 
             }
         }
     }
 
     override fun onDrawerMenuClicked(item: DrawerItem.MenuItem) {
-        handleNavigation(item)
+        pendingNavigation = item                            // ← just set flag
+        // this will trigger drawer's onDrawerSlide callback first, then onDrawerClose callback will be called
+        // which will then navigate to the correct destination.
+        binding.drawerLayout.closeDrawer(GravityCompat.START)
     }
 
-    private fun handleNavigation(item: DrawerItem.MenuItem) {
-        when (item.title) {
-            "Booked Ticket History" -> {
-           /*     binding.drawerLayout.addDrawerListener(object : DrawerLayout.SimpleDrawerListener() {
-                    override fun onDrawerClosed(drawerView: View) {
-                        binding.drawerLayout.removeDrawerListener(this)
-                        val intent =
-                            Intent(this@MoviesHomeActivity, BookedTicketHistoryActivity::class.java)
-                        startActivity(intent)
-                    }
-                })*/
-                binding.drawerLayout.closeDrawer(GravityCompat.START)
-            }
+    private fun handleNavigationFromDrawerItem(item: DrawerItem.MenuItem) {
+        when (item) {
+            is DrawerItem.MenuItem.BookedTicketHistory -> {
+                val navOptions = NavOptions.Builder()
+                    .setEnterAnim(R.anim.slide_in_right)
+                    .setExitAnim(R.anim.slide_out_left)
+                    .setPopEnterAnim(R.anim.slide_in_left)
+                    .setPopExitAnim(R.anim.slide_out_right)
+                    .build()
 
+                navController.navigate(
+                    R.id.bookingHistoryFragment,
+                    null,
+                    navOptions
+                )
+            }
             else -> {}
         }
-
-        // IMPORTANT: Close the drawer after navigation
-        if (binding.drawerLayout.isDrawerOpen(GravityCompat.START)) {
-            binding.drawerLayout.closeDrawer(GravityCompat.START)
-        }
     }
-
 }
+

@@ -60,7 +60,7 @@ class DrawerAdapter(
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bindData(item: DrawerItem.MenuItem) {
-            binding.drawerMenuItem.text = item.title
+            binding.drawerMenuItem.text = itemView.context.getString(item.titleRes)
             binding.drawerMenuItem.setOnClickListener { 
                 onItemClick(item)
             }
