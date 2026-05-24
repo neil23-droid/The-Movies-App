@@ -14,9 +14,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.example.android.themoviesapp.Others.DEFAULT_ERROR_MESSAGE
 import com.example.android.themoviesapp.Others.MOVIE_TRAILER_LINK
-import com.example.android.themoviesapp.Retrofit.GetMovieDetailsResponse
 import com.example.android.themoviesapp.databinding.FragmentMovieDetailsBinding
 import com.example.android.themoviesapp.presentation.models.BookingSessionModel
 import com.example.android.themoviesapp.presentation.models.MovieDetailsUiModel
@@ -52,18 +50,6 @@ class MovieDetailsFragment : Fragment() {
         arguments?.let {
         }
     }
-
-  /*  override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        _binding = _binding?: FragmentMovieDetailsBinding.inflate(inflater, container, false)
-
-
-        initializeObservers()
-        return _binding?.root
-    }*/
 
     override fun onCreateView(
         inflater: LayoutInflater,

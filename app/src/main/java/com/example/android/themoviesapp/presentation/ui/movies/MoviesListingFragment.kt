@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import com.example.android.themoviesapp.presentation.ui.extensions.startRotationAnimation
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -64,7 +65,7 @@ class MoviesListingFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        _binding = null                             // ← prevents memory leak
+        _binding = null
     }
 
 
@@ -106,7 +107,7 @@ class MoviesListingFragment : Fragment() {
     private fun showLoading() {
         binding.materialProgressBar.visibility = View.VISIBLE
         binding.upComingMoviesRV.visibility = View.GONE
-        /* binding.tvEmpty.visibility = View.GONE*/
+        binding.materialProgressBar.startRotationAnimation()
     }
 
     private fun showEmpty() {

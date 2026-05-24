@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.android.themoviesapp.Others.POSTER_BASE_URL
 import com.example.android.themoviesapp.R
-import com.example.android.themoviesapp.Retrofit.Poster
 import com.example.android.themoviesapp.databinding.MoviePosterItemBinding
 import com.example.android.themoviesapp.presentation.models.MoviePostersUiModel
 
