@@ -35,6 +35,8 @@ class MoviesListingFragment : Fragment() {
     private var _binding: FragmentMoviesListingBinding? = null
     private val binding get() = _binding!!
 
+    private var isSwipeRefreshing = false
+
     private val viewModel: MoviesListingViewModel by viewModels()  // ← Hilt injection
 
     private val moviesAdapter by lazy {
@@ -59,6 +61,7 @@ class MoviesListingFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupRecyclerView()
+        setupSwipeRefresh()
         observeUiState()
         viewModel.loadMovies()
     }
@@ -81,6 +84,13 @@ class MoviesListingFragment : Fragment() {
     /*
     *
     * initialize upcoming movies recycler view*/
+    private fun setupSwipeRefresh() {
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            isSwipeRefreshing = true
+            viewModel.loadMovies()
+        }
+    }
+
     private fun setupRecyclerView() {
         binding.upComingMoviesRV.apply {
             layoutManager = LinearLayoutManager(requireContext())
@@ -105,26 +115,33 @@ class MoviesListingFragment : Fragment() {
     }
 
     private fun showLoading() {
+        if (isSwipeRefreshing) return
         binding.materialProgressBar.visibility = View.VISIBLE
         binding.upComingMoviesRV.visibility = View.GONE
         binding.materialProgressBar.startRotationAnimation()
     }
 
-    private fun showEmpty() {
+    private fun stopRefreshingIndicators() {
+        isSwipeRefreshing = false
+        binding.swipeRefreshLayout.isRefreshing = false
         binding.materialProgressBar.visibility = View.GONE
+    }
+
+    private fun showEmpty() {
+        stopRefreshingIndicators()
         binding.upComingMoviesRV.visibility = View.GONE
         /* binding.tvEmpty.visibility = View.VISIBLE
          binding.tvEmpty.text = "No movies available"*/
     }
 
     private fun showError(message: String) {
-        binding.materialProgressBar.visibility = View.GONE
+        stopRefreshingIndicators()
         binding.upComingMoviesRV.visibility = View.GONE
         Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
     }
 
     private fun showMovies(movies: List<MoviesListUiModel>) {
-        binding.materialProgressBar.visibility = View.GONE
+        stopRefreshingIndicators()
         binding.upComingMoviesRV.visibility = View.VISIBLE
         moviesAdapter.updateList(movies)
     }
