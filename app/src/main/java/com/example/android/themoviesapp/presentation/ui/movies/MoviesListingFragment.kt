@@ -41,7 +41,8 @@ class MoviesListingFragment : Fragment() {
 
     private val moviesAdapter by lazy {
         UpComingMoviesAdapter { selectedMovie ->
-            navigateToDetail(selectedMovie)               // ← passes movieId directly
+            // user clicked a movie
+            viewModel.onEvent(MoviesListUiEvent.OnMovieClicked(selectedMovie))  // ← event
         }
     }
 
@@ -63,6 +64,7 @@ class MoviesListingFragment : Fragment() {
         setupRecyclerView()
         setupSwipeRefresh()
         observeUiState()
+        observeNavigationEvents()
         viewModel.loadMovies()
     }
 
@@ -87,7 +89,7 @@ class MoviesListingFragment : Fragment() {
     private fun setupSwipeRefresh() {
         binding.swipeRefreshLayout.setOnRefreshListener {
             isSwipeRefreshing = true
-            viewModel.loadMovies()
+            viewModel.onEvent(MoviesListUiEvent.OnRefreshClicked)         // ← event
         }
     }
 
@@ -101,14 +103,12 @@ class MoviesListingFragment : Fragment() {
 
     private fun observeUiState() {
         viewLifecycleOwner.lifecycleScope.launch {
-            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.uiState.collect { state ->
-                    when (state) {
-                        is UiState.Loading -> showLoading()
-                        is UiState.Empty   -> showEmpty()
-                        is UiState.Error   -> showError(state.message)
-                        is UiState.Success -> showMovies(state.data)
-                    }
+            viewModel.uiState.collect { state ->
+                when (state) {
+                    is UiState.Loading -> showLoading()
+                    is UiState.Empty   -> showEmpty()
+                    is UiState.Error   -> showError(state.message)
+                    is UiState.Success -> showMovies(state.data)
                 }
             }
         }
@@ -144,6 +144,21 @@ class MoviesListingFragment : Fragment() {
         stopRefreshingIndicators()
         binding.upComingMoviesRV.visibility = View.VISIBLE
         moviesAdapter.updateList(movies)
+    }
+
+    // Fragment observes navigation events
+    private fun observeNavigationEvents() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.navigationEvent.collect { event ->
+                    when (event) {
+                        is MoviesListNavigationEvent.ToMovieDetail -> {
+                            navigateToDetail(event.selectedMovie)
+                        }
+                    }
+                }
+            }
+        }
     }
 
     private fun navigateToDetail(selectedMovie: MoviesListUiModel) {
