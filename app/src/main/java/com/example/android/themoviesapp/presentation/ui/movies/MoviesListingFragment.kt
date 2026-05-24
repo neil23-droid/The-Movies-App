@@ -65,7 +65,6 @@ class MoviesListingFragment : Fragment() {
         setupSwipeRefresh()
         observeUiState()
         observeNavigationEvents()
-        viewModel.loadMovies()
     }
 
     override fun onDestroyView() {

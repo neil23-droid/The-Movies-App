@@ -28,6 +28,10 @@ class MoviesListingViewModel @Inject constructor(
     private val _uiState = MutableStateFlow<UiState<List<MoviesListUiModel>>>(UiState.Loading)
     val uiState: StateFlow<UiState<List<MoviesListUiModel>>> = _uiState.asStateFlow()
 
+    init {
+        loadMovies()
+    }
+
     // Channel for one shot navigation events
     private val _navigationEvent = Channel<MoviesListNavigationEvent>()
     val navigationEvent = _navigationEvent.receiveAsFlow()
