@@ -9,6 +9,7 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="light_grey_1">#f5f5f5</color>
+    <color name="shimmer_placeholder">#E0E0E0</color>
 
     <color name="star_rating_bg">#EAF4D2</color>
     <color name="star_rating_color">#96C61C</color>

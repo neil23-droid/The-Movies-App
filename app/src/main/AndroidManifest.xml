@@ -22,29 +22,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".BookedTicketHistory.BookedTicketHistoryActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.TheMoviesApp.NoActionBar"></activity>
-        <activity
-            android:name=".BookTicket.BookTicketActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.TheMoviesApp.NoActionBar" />
-        <activity
-            android:name=".MovieDetail.MovieDetailsActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.TheMoviesApp.NoActionBar" />
-       <!-- <activity
-            android:name=".MoviesListing.MoviesListingActivity"
-            android:exported="true"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.TheMoviesApp.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>-->
     </application>
 
 </manifest>

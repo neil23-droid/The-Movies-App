@@ -1,4 +1,4 @@
-package com.example.android.themoviesapp.BookedTicketHistory
+package com.example.android.themoviesapp.Others.BookedTicketHistory
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
